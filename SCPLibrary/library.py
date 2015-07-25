@@ -3,8 +3,8 @@ from paramiko.client import AutoAddPolicy
 from scp import SCPClient
 from errors import SCPNotConnectedError
 
-class SCPLibrary(object):
 
+class SCPLibrary(object):
     def __init__(self):
         self.ssh = SSHClient()
         self.ssh.set_missing_host_key_policy(AutoAddPolicy())
