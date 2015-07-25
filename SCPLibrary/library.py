@@ -10,7 +10,11 @@ class SCPLibrary(object):
         self.ssh.set_missing_host_key_policy(AutoAddPolicy())
         self.scp_client = None
 
-    def open_connection(self, hostname, port=22, username=None, password=None):
+    def open_connection(self, hostname, port='22', username=None, password=None):
+        try:
+            port = int(port)
+        except:
+            raise ValueError('Port must be a valid number.')
         self.ssh.connect(hostname, port=port, username=username, password=password)
         self.scp_client = SCPClient(self.ssh.get_transport())
 
