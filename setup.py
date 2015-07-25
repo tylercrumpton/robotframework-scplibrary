@@ -6,11 +6,11 @@ config = {
     'url': 'http://www.tylercrumpton.com',
     'download_url': 'https://github.com/tylercrumpton/robotframework-scplibrary',
     'author_email': 'tyler.crumpton@gmail.com',
-    'vcversioner': {'version_module_paths': ['SCP/_version.py']},
+    'vcversioner': {'version_module_paths': ['SCPLibrary/_version.py']},
     'install_requires': ['scp'],
-    'packages': ['SCP'],
+    'packages': ['SCPLibrary'],
     'scripts': [],
-    'name': 'robotframework-scp'
+    'name': 'robotframework-scplibrary'
 }
 
 setup(**config)
