@@ -14,6 +14,11 @@ class SCPLibrary(object):
         self.ssh.connect(hostname, port=port, username=username, password=password)
         self.scp_client = SCPClient(self.ssh.get_transport())
 
+    def close_connection(self):
+        if self.scp_client is not None:
+            self.scp_client.close()
+            self.scp_client = None
+
     def put_file(self, local_filepath, remote_filepath):
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
