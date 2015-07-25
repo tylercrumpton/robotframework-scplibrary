@@ -1,2 +1,2 @@
 class SCPNotConnectedError(RuntimeError):
-    ROBOT_EXIT_ON_FAILURE = True
+    ROBOT_EXIT_ON_FAILURE = False
