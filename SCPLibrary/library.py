@@ -11,6 +11,17 @@ class SCPLibrary(object):
         self.scp_client = None
 
     def open_connection(self, hostname, port='22', username=None, password=None):
+        """Opens a new SCP connection to the given host.
+
+        The default port used is `22`:
+        | Open Connection | host.tylercrumpton.com |
+
+        A different port may be optionally given by using the `port` argument:
+        | Open Connection | host.tylercrumpton.com | port=4242 |
+
+        Authentication may be done using a username and password:
+        | Open Connection | host.tylercrumpton.com | username=tyler | password=iamateapot |
+        """
         try:
             port = int(port)
         except:
@@ -19,16 +30,37 @@ class SCPLibrary(object):
         self.scp_client = SCPClient(self.ssh.get_transport())
 
     def close_connection(self):
+        """Closes the SCP connection.
+
+        Example:
+        | Open Connection  | host.tylercrumpton.com | username=tyler    | password=iamateapot |
+        | Get File         | tea.txt                | /mytea/newtea.txt |
+        | Close Connection |
+        """
         if self.scp_client is not None:
             self.scp_client.close()
             self.scp_client = None
 
     def put_file(self, local_filepath, remote_filepath):
+        """Uploads a file to the remote machine from the local machine.
+
+        Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
+
+        Example:
+        | Put File | mytea.txt | /home/tyler/tea.txt
+        """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
         self.scp_client.put(local_filepath, remote_filepath)
 
     def get_file(self, remote_filepath, local_filepath):
+        """Downloads a file from the remote machine to the local machine.
+
+        Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
+
+        Example:
+        | Get File | /home/tyler/tea.txt | sametea.txt
+        """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
         self.scp_client.get(remote_filepath, local_filepath)
