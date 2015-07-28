@@ -78,7 +78,20 @@ class SCPLibrary(object):
         """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
-        self.scp_client.put(local_filepath, remote_filepath)
+        self.scp_client.put(local_filepath, remote_filepath, recursive=False)
+
+    def put_directory(self, local_directory, remote_filepath):
+        """Uploads a directory to the remote machine from the local machine.
+
+        Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
+
+        Examples:
+        | Put File | mytea_dir | /home/tyler/newtea_dir
+        | Put File | mytea.txt | /home/tyler/
+        """
+        if self.scp_client is None:
+            raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
+        self.scp_client.put(local_directory, remote_filepath, recursive=True)
 
     def get_file(self, remote_filepath, local_filepath):
         """Downloads a file from the remote machine to the local machine.
