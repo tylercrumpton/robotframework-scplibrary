@@ -5,6 +5,33 @@ from errors import SCPNotConnectedError
 
 
 class SCPLibrary(object):
+    """Robot Framework test library for Secure Copy (SCP).
+
+    This library can be used to copy files to and from a remote machine using Secure Copy (SCP). It uses the
+    Paramiko SSH Python library (just like robotframework-sshlibrary) and an SCP wrapper ('scp' by James Bardin).
+
+    The library does not currently support Jython or IronPython at this time.
+
+    == Table of contents ==
+
+    - `Connection`
+    - `File transfer`
+
+    = Connection =
+
+    Before files can be transferred a connection to remote machine must first be made. A connection can be made with the
+    `Open Connection` keyword. This library currently only supports username/password authentication, but key-based
+    connections should be implemented soon.
+
+    Connections should be closed using the `Close Connection` when they are no longer in use.
+
+    = File transfer =
+
+    Files can be uploaded to the remote machine using the `Put File` keyword or downloaded to the local machine using
+    the `Get File` keyword. Currently, only single-file transfers are supported.
+
+    A connection must be made using the `Open Connection` keyword before file transfers may be made.
+    """
     def __init__(self):
         self.ssh = SSHClient()
         self.ssh.set_missing_host_key_policy(AutoAddPolicy())
