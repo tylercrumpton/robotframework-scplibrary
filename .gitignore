@@ -59,6 +59,7 @@ target/
 
 # VCVersioner
 _version.py
+version.txt
 
 # Robot output files
 log.html
