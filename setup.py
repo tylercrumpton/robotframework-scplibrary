@@ -7,7 +7,7 @@ config = {
     'download_url': 'https://github.com/tylercrumpton/robotframework-scplibrary',
     'author_email': 'tyler.crumpton@gmail.com',
     'vcversioner': {'version_module_paths': ['SCPLibrary/_version.py']},
-    'install_requires': ['scp'],
+    'install_requires': ['scp', 'paramiko'],
     'packages': ['SCPLibrary'],
     'scripts': [],
     'name': 'robotframework-scplibrary'
