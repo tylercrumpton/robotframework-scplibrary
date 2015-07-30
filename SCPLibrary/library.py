@@ -82,8 +82,8 @@ class SCPLibrary(object):
         Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
 
         Examples:
-        | Put File | mytea.txt | /home/tyler/tea.txt
-        | Put File | mytea.txt | /home/tyler/
+        | Put File | mytea.txt | /home/tyler/tea.txt |
+        | Put File | mytea.txt | /home/tyler/        |
         """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
@@ -95,8 +95,8 @@ class SCPLibrary(object):
         Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
 
         Examples:
-        | Put File | mytea_dir | /home/tyler/newtea_dir
-        | Put File | mytea.txt | /home/tyler/
+        | Put File | mytea_dir | /home/tyler/newtea_dir |
+        | Put File | mytea.txt | /home/tyler/           |
         """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
@@ -108,7 +108,7 @@ class SCPLibrary(object):
         Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
 
         Example:
-        | Get File | /home/tyler/tea.txt | sametea.txt
+        | Get File | /home/tyler/tea.txt | sametea.txt |
         """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
