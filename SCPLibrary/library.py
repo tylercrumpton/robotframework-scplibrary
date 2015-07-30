@@ -3,6 +3,11 @@ from paramiko.client import AutoAddPolicy
 from scp import SCPClient
 from errors import SCPNotConnectedError
 
+try:
+    from _version import __version__, __revision__
+except ImportError:
+    __version__ = "UNKNOWN"
+    __revision__ = "UNKNOWN"
 
 class SCPLibrary(object):
     """Robot Framework test library for Secure Copy (SCP).
@@ -32,6 +37,9 @@ class SCPLibrary(object):
 
     A connection must be made using the `Open Connection` keyword before file transfers may be made.
     """
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
+    ROBOT_LIBRARY_VERSION = __version__
+
     def __init__(self):
         self.ssh = SSHClient()
         self.ssh.set_missing_host_key_policy(AutoAddPolicy())
