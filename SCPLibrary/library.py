@@ -109,7 +109,7 @@ class SCPLibrary(object):
         on the remote machine may be used.
 
         Setting `recursive` to True will transfer files and directories recursively.
-        
+
         Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
 
         Example:
