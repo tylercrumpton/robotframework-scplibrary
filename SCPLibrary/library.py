@@ -102,14 +102,22 @@ class SCPLibrary(object):
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
         self.scp_client.put(local_directory, remote_filepath, recursive=True)
 
-    def get_file(self, remote_filepath, local_filepath):
+    def get_file(self, remote_filepath, local_filepath, recursive=False):
         """Downloads a file from the remote machine to the local machine.
 
+        `remote_filepath` determines the path to retrieve from remote host. Shell wildcards and environment variables
+        on the remote machine may be used.
+
+        Setting `recursive` to True will transfer files and directories recursively.
+        
         Note: A connection to the remote machine must be made first using the `Open Connection` keyword.
 
         Example:
-        | Get File | /home/tyler/tea.txt | sametea.txt |
+        | Get File | /home/tyler/tea.txt | sametea.txt |                |
+        | Get File | /home/tyler/*.txt   | myteas/     |                |
+        | Get File | /home/tyler/        | mytylerdir/ | recursive=True |
         """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
-        self.scp_client.get(remote_filepath, local_filepath)
+        self.scp_client.get(remote_filepath, local_filepath, recursive=recursive)
+e
