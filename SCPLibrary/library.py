@@ -32,7 +32,7 @@ class SCPLibrary(object):
 
     = File transfer =
 
-    Files and directories can be uploaded to the remote machine using the `Put File` or 'Put Directory' keywords or
+    Files and directories can be uploaded to the remote machine using the `Put File` or `Put Directory` keywords or
     downloaded to the local machine using the `Get File` keyword.
 
     A connection must be made using the `Open Connection` keyword before file transfers may be made.
