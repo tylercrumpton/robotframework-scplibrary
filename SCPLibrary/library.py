@@ -25,8 +25,8 @@ class SCPLibrary(object):
     = Connection =
 
     Before files can be transferred a connection to remote machine must first be made. A connection can be made with the
-    `Open Connection` keyword. This library currently only supports username/password authentication, but key-based
-    connections should be implemented soon.
+    `Open Connection` keyword. Both normal username/password authentication and asymmetric key-pair authentication may
+    be used.
 
     Connections should be closed using the `Close Connection` when they are no longer in use.
 
@@ -45,7 +45,7 @@ class SCPLibrary(object):
         self.ssh.set_missing_host_key_policy(AutoAddPolicy())
         self.scp_client = None
 
-    def open_connection(self, hostname, port='22', username=None, password=None):
+    def open_connection(self, hostname, port='22', username=None, password=None, key_filename=None):
         """Opens a new SCP connection to the given host.
 
         The default port used is `22`:
@@ -56,12 +56,15 @@ class SCPLibrary(object):
 
         Authentication may be done using a username and password:
         | Open Connection | host.tylercrumpton.com | username=tyler | password=iamateapot |
+
+        Or by using a private keyfile:
+        | Open Connection | host.tylercrumpton.com | username=tyler | key_filename=myprivatekey |
         """
         try:
             port = int(port)
         except:
             raise ValueError('Port must be a valid number.')
-        self.ssh.connect(hostname, port=port, username=username, password=password)
+        self.ssh.connect(hostname, port=port, username=username, password=password, key_filename=key_filename)
         self.scp_client = SCPClient(self.ssh.get_transport())
 
     def close_connection(self):
@@ -120,4 +123,3 @@ class SCPLibrary(object):
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
         self.scp_client.get(remote_filepath, local_filepath, recursive=recursive)
-e
