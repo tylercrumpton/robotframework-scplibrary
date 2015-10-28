@@ -41,8 +41,7 @@ class SCPLibrary(object):
     ROBOT_LIBRARY_VERSION = __version__
 
     def __init__(self):
-        self.ssh = SSHClient()
-        self.ssh.set_missing_host_key_policy(AutoAddPolicy())
+        self.ssh = None
         self.scp_client = None
 
     def open_connection(self, hostname, port='22', username=None, password=None, key_filename=None):
@@ -64,6 +63,8 @@ class SCPLibrary(object):
             port = int(port)
         except:
             raise ValueError('Port must be a valid number.')
+        self.ssh = SSHClient()
+        self.ssh.set_missing_host_key_policy(AutoAddPolicy())
         self.ssh.connect(hostname, port=port, username=username, password=password, key_filename=key_filename)
         self.scp_client = SCPClient(self.ssh.get_transport())
 
@@ -78,6 +79,9 @@ class SCPLibrary(object):
         if self.scp_client is not None:
             self.scp_client.close()
             self.scp_client = None
+        if self.ssh is not None:
+            self.ssh.close()
+            self.ssh = None
 
     def put_file(self, local_filepath, remote_filepath):
         """Uploads a file to the remote machine from the local machine.
