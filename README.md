@@ -1,6 +1,15 @@
 robotframework-scplibrary 
 =========================
-
+<p align="center">
+    <a href="https://pypi.python.org/pypi/robotframework-scplibrary">
+        <img src="https://img.shields.io/pypi/v/robotframework-scplibrary.svg"
+             alt="robotframework-scplibrary on PyPi">
+    </a>
+    <a href="https://pypi.python.org/pypi/robotframework-scplibrary">
+        <img src="https://img.shields.io/pypi/dm/robotframework-scplibrary.svg"
+             alt="Monthly Downloads from PyPi">
+    </a>
+</p>
 Robot Framework test library for Secure Copy (SCP)
 --------------------------------------------------
 
