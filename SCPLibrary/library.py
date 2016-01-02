@@ -126,4 +126,10 @@ class SCPLibrary(object):
         """
         if self.scp_client is None:
             raise SCPNotConnectedError("An SCPLibrary connection must be created first using the 'Open Connection' keyword.")
-        self.scp_client.get(remote_filepath, local_filepath, recursive=recursive)
+        self.scp_client.get(remote_filepath, local_filepath, recursive=self._is_true_arg(recursive))
+
+    @staticmethod
+    def _is_true_arg(arg):
+        if isinstance(arg, basestring):
+            return arg.lower() not in ['false', 'no']
+        return bool(arg)
