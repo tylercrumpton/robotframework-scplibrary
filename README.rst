@@ -1,6 +1,9 @@
 robotframework-scplibrary
 =========================
 
+|PyPI version| |PyPI license| |PyPI pyversions|
+
+
 Robot Framework test library for Secure Copy (SCP)
 --------------------------------------------------
 
@@ -32,7 +35,7 @@ extract the source and run:
 Example
 -------
 
-.. code:: python
+.. code::
 
    *** Settings ***
    Library   SCPLibrary
@@ -69,3 +72,13 @@ machine using the ``Get File`` keyword.
 
 A connection must be made using the ``Open Connection`` keyword before
 file transfers may be made.
+
+.. |PyPI version| image:: https://img.shields.io/pypi/v/robotframework-scplibrary.svg
+   :target: https://pypi.org/project/robotframework-scplibrary/
+
+.. |PyPI license| image:: https://img.shields.io/pypi/l/robotframework-scplibrary.svg
+:target: https://pypi.org/project/robotframework-scplibrary/
+
+.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/robotframework-scplibrary.svg
+:target: https://pypi.org/project/robotframework-scplibrary/
+
