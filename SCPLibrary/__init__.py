@@ -1,1 +1,1 @@
-from SCPLibrary.library import SCPLibrary
+from .library import SCPLibrary

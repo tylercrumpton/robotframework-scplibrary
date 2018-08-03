@@ -2,13 +2,17 @@ from paramiko import SSHClient
 from paramiko.client import AutoAddPolicy
 from scp import SCPClient
 from six import string_types
-from SCPLibrary.errors import SCPNotConnectedError
 
 try:
     from _version import __version__, __revision__
 except ImportError:
     __version__ = "UNKNOWN"
     __revision__ = "UNKNOWN"
+
+
+class SCPNotConnectedError(RuntimeError):
+    ROBOT_EXIT_ON_FAILURE = False
+
 
 class SCPLibrary(object):
     """Robot Framework test library for Secure Copy (SCP).
