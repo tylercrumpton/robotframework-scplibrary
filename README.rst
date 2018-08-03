@@ -77,8 +77,8 @@ file transfers may be made.
    :target: https://pypi.org/project/robotframework-scplibrary/
 
 .. |PyPI license| image:: https://img.shields.io/pypi/l/robotframework-scplibrary.svg
-:target: https://pypi.org/project/robotframework-scplibrary/
+   :target: https://pypi.org/project/robotframework-scplibrary/
 
 .. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/robotframework-scplibrary.svg
-:target: https://pypi.org/project/robotframework-scplibrary/
+   :target: https://pypi.org/project/robotframework-scplibrary/
 
