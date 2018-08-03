@@ -1,7 +1,8 @@
 from paramiko import SSHClient
 from paramiko.client import AutoAddPolicy
 from scp import SCPClient
-from errors import SCPNotConnectedError
+from six import string_types
+from SCPLibrary.errors import SCPNotConnectedError
 
 try:
     from _version import __version__, __revision__
@@ -130,6 +131,6 @@ class SCPLibrary(object):
 
     @staticmethod
     def _is_true_arg(arg):
-        if isinstance(arg, basestring):
+        if isinstance(arg, string_types):
             return arg.lower() not in ['false', 'no']
         return bool(arg)
